@@ -20,7 +20,7 @@ var myWindow = {
 		ele.value = this.screenWidth;
 	
 	ele = document.getElementById("syH");
-	ele.value = this.screenHeight;	
+	  ele.value = this.screenHeight;	
 	}
 };
 

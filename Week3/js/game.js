@@ -1,8 +1,9 @@
+var answer = Math.floor((Math.random() * 100) + 1);
 var game = {
-	answer: 50, // Need to random this value from 0-100
+	 // Need to random this value from 0-100
 	init: function() {
 		var self = this;
-
+         var clear=document.getElementById("userValue");
 		// Number 0
 		var ele = document.getElementById("zero");
 		ele.addEventListener("click", function(){
@@ -69,7 +70,22 @@ var game = {
 		ele.addEventListener("click", function(){
 			self.checkAnswer(self);
 		}, false);
+
+// reset!
+		var ele = document.getElementById("reset");
+		ele.addEventListener("click", function(){
+			clear.value='';
+		}, false);
+		
+// reset!
+		var ele = document.getElementById("showAns");
+		ele.addEventListener("click", function(){
+			clear.value=answer;
+		}, false);
+		
 	},
+
+	
 	click: function(value) {
 		console.log(value + " clicked.");
 		var userValueEle = document.getElementById("userValue");
@@ -78,10 +94,11 @@ var game = {
 	checkAnswer: function(self) {
 		var userValueEle = document.getElementById("userValue");
 		if (userValueEle.value == self.answer) {
-		alert("Congratulation! Try again. ");	
+		alert("Congratulation! Right guess. ");	
 	} else {
 
 		userValueEle.value="";
+		alert("wrong  guess! Try again. ");	
 	}
 		
 	}
