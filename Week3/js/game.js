@@ -95,10 +95,14 @@ var game = {
 		var userValueEle = document.getElementById("userValue");
 		if (userValueEle.value == self.answer) {
 		alert("Congratulation! Right guess. ");	
-	} else {
-
+	} else if (userValueEle.value > self.answer) {
+		alert("Sorry !  Your guess is too high ");
 		userValueEle.value="";
-		alert("wrong  guess! Try again. ");	
+	}
+	else {
+         alert("Sorry !  Your guess is too low ");
+		userValueEle.value="";
+		//alert("wrong  guess! Try again. ");	
 	}
 		
 	}
