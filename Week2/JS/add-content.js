@@ -25,3 +25,6 @@ if ( myDate.getHours() < 12 ) {
     else if ( myDate.getHours() > 17 && myDate.getHours() <= 24 ) {
         date.textContent = "Good Evening!"; 
     }
+
+    var nameELe = document.getElementById("name");
+        nameELe.textContent = "Arvind"; 
