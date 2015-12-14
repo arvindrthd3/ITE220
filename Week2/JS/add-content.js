@@ -1,5 +1,5 @@
 var products = ["Stamford T-Shirt", "Stamford Notebook", "Stamford Wristband"];
-var price = [10, 5, 1];
+var price = [10, 5, 5];
 var total = 0;
 var i = 0;
 
