@@ -41,9 +41,9 @@ body {
 .content .discount {
   color: #c7254e;
   font-weight: bold;
-  /*background-color: #f9f2f4 !important;
+  /*background-color: #f9f2f4 !important;*/
   border-radius: 5px;
   width: 100px;
   position: fixed;
-  left: 40%;*/
+  left: 40%;
 }
