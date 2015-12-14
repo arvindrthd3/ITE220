@@ -14,3 +14,14 @@ i++;
 var totalPriceEle = document.getElementById("totalPrice");
 totalPriceEle.textContent = "$" + total;
 
+var myDate = new Date();
+var date = document.getElementById("date");
+if ( myDate.getHours() < 12 ) {
+		date.textContent = "Good Morning!"; 
+    }
+    else  if ( myDate.getHours() >= 12 && myDate.getHours() <= 17 ) { 
+    	date.textContent = "Good Afternoon!"; 
+    } 
+    else if ( myDate.getHours() > 17 && myDate.getHours() <= 24 ) {
+        date.textContent = "Good Evening!"; 
+    }
