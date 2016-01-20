@@ -1,0 +1,88 @@
+<html>
+	<head>
+		<title>Week7 | Weather</title>
+<link rel="stylesheet" type="text/css" href="css/back.css" />
+<style type="text/css">
+body {
+    background-image: url("images/1.jpg");
+   /* width: 560px; 
+  height: 400px; */
+  
+  background-position: 0px 0px ;
+  background-repeat:  repeat-x;
+
+  animation: animatedBackground 30s linear infinite;
+    
+}
+
+@keyframes animatedBackground {
+  from { background-position: 0 0;  }
+  to { background-position: 100% 0; }
+}
+h1{
+	font-size: 50px;
+	color: red;
+}
+h3{
+	font-size: 25px;
+	color: red;
+}
+
+p{
+	font-size: 30px;
+	color: yellow;
+}
+a {
+	font-family: "Times New Roman", Georgia, Serif;
+	font-size: 30px;
+    text-decoration: none;
+    margin-right: 20px;
+    border-style: solid;
+    border-width: 2px;
+}
+a:link {
+    color: green;
+}
+a:hover {
+    color: hotpink;
+}
+a:active {
+    color: green;
+    background-color: hotpink;
+}
+
+#container{
+	font-family: "Arial";
+	
+  
+}
+#ncontainer{
+	font-family: "Arial";
+   
+	}
+input
+</style>
+	</head>	
+	<body>
+
+	 <center>
+	 	<h1> Welcome To ARV Weather Forecast</h1>
+	 	<p><i>Select a city for checking the Weather</i></p>
+		<a href="#">Bangkok</a>
+		<a href="#">London</a>
+		<a href="#">New York</a>
+		<a href="#">New Delhi</a>
+		<a href="#">Brisbane</a>
+		<h3><div id="ncontainer">
+		</div>
+		<div id="container">
+		</div> </h3>
+		<br />
+        <input id="btnCtoF" type="button" value="Temperature in Fahrenheit" />
+         <input id="btnFtoC" type="button" value="Temerature in Celcius" />
+        </center>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/app.js"></script>
+	
+	</body>
+	</html>
