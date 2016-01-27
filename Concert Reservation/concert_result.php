@@ -44,7 +44,7 @@ foreach ($selectedSeats as $selectedSeat) {
 	if($selectedSeat == "A-4"){
 	    $price = 3000 * .50;
 	    echo ":  ".$price ."<br>";
-	    echo "Congratulation!! You have the lucky draw ticket. This A-4 seat price is 50% off!<br>";
+	    echo "Congratulation!! You have won the lucky draw ticket. This A-4 seat price is 50% off!<br>";
 	} else{
         echo ":  ".$price ."<br>";
 		}
