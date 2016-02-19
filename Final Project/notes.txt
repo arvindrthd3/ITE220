@@ -1,0 +1,107 @@
+#1089-incorrect prefix key
+
+i4110017
+
+
+
+$(function(){
+  var app = {
+    init: function() {
+      app.init_effect();
+      app.init_event();
+    },
+
+    init_effect: function() {
+     $("#f_error").hide();
+$("#l_error").hide();
+$("#email_error").hide();
+$("#phone_error").hide();
+
+    },
+
+    init_event: function() {
+   
+$("#submit").on("click", 
+      function(e){
+      
+      e.preventDefault();
+
+      var Fname = $("#username").val();
+      var Lname = $("#lastname").val();
+       var Email = $("#email").val();
+       var atpos = Email.indexOf("@");
+    var dotpos = Email.lastIndexOf(".");
+
+      var phone = $("#contact").val();
+  
+       if($.isNumeric(Fname) || Fname =="" ){
+           $("#f_error").show();
+          $("#username").val("");
+             
+      } else if($.isNumeric(Lname) || Lname =="" ){
+           $("#l_error").show();
+          $("#lastname").val("");
+             
+      } else if(atpos<1 || dotpos<atpos+2 || dotpos+2>=Email.length || Email == "" ){
+           $("#email_error").show();
+          $("#email").val("");
+             
+      } else if(!$.isNumeric(phone)  || phone == ""){
+           $("#phone_error").show();
+          $("#contact").val("");
+             
+      } else{
+       
+          $("#f_error").hide();
+      $("#l_error").hide();
+      $("#email_error").hide();
+      $("#phone_error").hide();
+   
+        // submitHandler: submitForm 
+        $("#form").submit();
+
+      }
+       });  
+ 
+function submitForm()
+    {  
+    var data = $("#login").serialize();
+    
+    $.ajax({
+    
+    type : 'POST',
+    url  : 'submit.php',
+    data : data,
+    beforeSend: function()
+    { 
+     alert("sending....")
+    },
+    success :  function(data)
+         {      
+        if(data==1){
+         
+        alert("error1")
+           
+         }
+          else if(data =="registered")
+          {
+         
+         alert("registered")
+          
+        } else{
+          
+         alert("error2")  
+         }
+          } 
+        });
+
+    return false;
+  }
+
+  }
+
+  }
+  app.init();
+});
+
+

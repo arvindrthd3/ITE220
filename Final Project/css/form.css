@@ -1,0 +1,115 @@
+#login {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2),  
+                0 1px 1px rgba(0, 0, 0, .2),
+                0 3px 0 #fff,
+                0 4px 0 rgba(0, 0, 0, .2),
+                0 6px 0 #fff,  
+                0 7px 0 rgba(0, 0, 0, .2);
+}
+
+
+#login {   /*alignment right top*/
+    position: fixed;
+    z-index: 0;
+    
+    top: 250px; 
+    right: 0px;
+    width: 300px;
+    border: 3px solid #3b5998;
+    padding: 10px;
+}
+
+#login:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border: 1px dashed #ccc;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    box-shadow: 0 0 0 1px #fff;
+}
+
+h1 {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .7), 0px 2px 0 rgba(0, 0, 0, .5);
+    text-transform: uppercase;
+    text-align: center;
+    color: #666;
+    margin: 0 0 30px 0;
+    letter-spacing: 4px;
+    font: normal 26px/1 Verdana, Helvetica;
+    position: relative;
+}
+
+h1:after, 
+h1:before {
+    background-color: #777;
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 15px;
+    width: 120px;   
+}
+
+h1:after {      
+    right: 0;
+}
+
+h1:before {
+    background-image: linear-gradient(right, #777, #fff);
+    left: 0;
+}
+
+#submit{/*buttom submit*/
+	margin: auto;
+}
+
+.foot-1 {
+    position: absolute;
+    left: 0px;
+    width: 15%; 
+    margin-top: 2.0%;
+    margin-left: 1.0%;
+  
+}
+
+.foot-1 p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.8em;
+}
+.news p {
+    font-size: 13px;
+    color: #888;
+    line-height: 1.3em;
+    padding: 5px 0;
+}
+.news p a {
+    color:#7BAD00;
+    font-size: 12px;
+}
+.foot-1 h3 {
+    font-size:1.2em;
+    color:#A5A5A5;
+    border-bottom: 1px solid #333;
+    padding-bottom: 3px;
+    font-family: 'Coda', cursive;
+}
+
+.form{/*form alignment*/
+    position: absolute;
+    margin: 1%;
+}
+
+#dropbox input[type=submit]{/*dropdown box code css*/
+    background-color: #3b5998;
+    border: none;
+    color: white;
+    height: 40px;
+    width: 90px;  
+    text-decoration: none;
+   margin-left: 1%;
+    cursor: pointer;
+
+}

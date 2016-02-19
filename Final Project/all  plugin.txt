@@ -1,0 +1,51 @@
+http://red-team-design.com/slick-login-form-with-html5-css3/
+
+
+http://tutorialzine.com/2012/02/apple-like-login-form/
+
+http://demo.code-abc.com/jquery_ui_modal/
+
+https://codyhouse.co/gem/loginsignup-modal-window/
+
+
+http://www.codingcage.com/2015/11/ajax-registration-script-using-jquery-php.html
+
+
+https://www.youtube.com/watch?v=PBLuP2JZcEg
+
+
+
+ <div id="news">
+      <h3>Lorem Ipsum is simply</h3>
+	    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore pariatur.</p>
+	    <h3>Lorem Ipsum is simply</h3>
+	    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore pariatur.</p>
+	</div>
+
+
+
+https://github.com/wmh/jquery-scrollbox
+
+
+http://www.w3schools.com/php/php_mysql_select.asp
+
+
+
+
+Login Details
+
+Username: aseanuni
+Password: 2nsI98st2Z
+
+Control Panel URL: http://188.40.124.181:2082/
+Once your domain has propogated, you may also use http://www.aseanuniversities.com:2082/
+
+
+
+
+
+
+
+
+php search from database 
+
