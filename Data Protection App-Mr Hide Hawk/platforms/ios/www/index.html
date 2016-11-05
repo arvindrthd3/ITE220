@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi, minimal-ui" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Mr. Hide Hawk</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+  </head>
+  <body class="">
+    <!--template-->
+    <script type="text/template" class="template" id="search-result-template">
+      <% _.each(data, function(list) { %>      
+        <li class="swipeout swipeout-search-result">
+          <div class="swipeout-content">
+            <a href="#" class="item-content  item-content-click">
+              <% if(list.status != ""){ %> 
+                <div class="item-media">
+                  <i class="icon fa fa-product-hunt" style="color: red;"></i>
+                  <input type="hidden" class="status" value="Pending" />
+                </div>
+              <% } %>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">
+                    <%=list.titleNoFormatting%><br/>
+                    <input type="hidden" class="full-url" value="<%=list.url%>" />
+                  </div>
+                  <div class="item-after visibleUrl" style="margin-left: 0px; font-size: 13px; color: #8e8e93;"><%=list.visibleUrl%></div>
+                  <div class="item-after content" style="margin-left: 0px; font-size: 13px; color: #8e8e93;"><%=list.content%></div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <% if(list.status == ""){ %> 
+            <div class="swipeout-actions-right">
+              <a href="#" class="swipeout-delete" data-confirm="Are you sure you want to delete this item?" data-confirm-title="Delete?" data-close-on-cancel="true"> X </a>
+            </div>
+          <%  } %>
+        </li>
+      <%  }); %>
+    </script>
+
+    <script type="text/template" class="template" id="list-container-template">
+      <% _.each(data, function(list) { %>      
+        <li class="swipeout swipeout-mylist-result" style="<%=list.bg%>">
+          <div class="swipeout-content">
+            <a href="#" class="item-content item-content-click">
+              <input type="hidden" class="status" value="<%=list.status%>" />
+              <% if(list.status == "Pending"){ %> 
+                  
+                  <div class="item-media">
+                    <i class="icon fa fa-product-hunt" style="color: red;"></i>
+                  </div>
+              <% }else { %>
+                <div class="item-media">
+                  <i class="icon fa fa-ban" style="color: black;"></i>
+                </div>
+              <% } %>
+              
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">
+                    <%=list.titleNoFormatting%><br/>
+                    <input type="hidden" class="full-url" value="<%=list.url%>" />
+                  </div>
+                  <div class="item-after visibleUrl" style="margin-left: 0px; font-size: 13px; color: #8e8e93;"><%=list.visibleUrl%></div>
+                  <div class="item-after content" style="margin-left: 0px; font-size: 13px; color: #8e8e93;"><%=list.content%></div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <% if(list.status == "Pending"){ %> 
+            <div class="swipeout-actions-right">
+              <a href="#" class="swipeout-delete" data-confirm="Are you sure want to cancel the request?" data-confirm-title="Cancel?" data-close-on-cancel="true">Cancel</a>
+            </div>
+          <% } %>
+        </li>
+      <%  }); %>
+    </script>
+
+    <script type="text/template" class="template" id="admin-list-container-template">
+      <% _.each(data, function(list) { %>      
+        <li class="swipeout swipeout-admin-list-result">
+          <div class="swipeout-content">
+            <a href="#" class="item-content item-content-click">
+              <% if(list.status != ""){ %> 
+                  <input type="hidden" class="status" value="Pending" />
+              <% } %>
+              <div class="item-media">
+                <i class="icon fa fa-product-hunt" style="color: red;"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">
+                    <%=list.titleNoFormatting%><br/>
+                    <input type="hidden" class="full-url" value="<%=list.url%>" />
+                  </div>
+                  <div class="item-after visibleUrl" style="margin-left: 0px; font-size: 13px; color: #8e8e93;"><%=list.visibleUrl%></div>
+                  <div class="item-after content" style="margin-left: 0px; font-size: 13px; color: #8e8e93;"><%=list.content%></div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="swipeout-actions-right">
+            <a href="#" class="swipeout-delete" data-confirm="Are you sure want to do this?" data-confirm-title="Done?" data-close-on-cancel="true">Done</a>
+          </div>
+        </li>
+      <%  }); %>
+    </script>
+
+    <script type="text/template" class="template" id="list-popup-template">
+      <div class="popup">
+        <div class="content-block">
+          <div class="content-block-title">TITLE</div>
+          <div class="content-block">
+            <div class="content-block-inner">
+              <p> </p>
+            </div>
+          </div>
+          <p><a href="#" class="close-popup">Close me</a></p>
+        </div>
+      </div> 
+    </script>
+
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay bg-lightblue"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    
+    <!-- Views, and they are tabs-->
+    <!-- We need to set "toolbar-through" class on it to keep space for our tab bar-->
+    <div class="views tabs toolbar-through">
+      <!-- Your first view, it is also a .tab and should have "active" class to make it visible by default-->
+      <div id="view-1" class="view view-main tab active">
+        <!-- Pages-->
+        <div class="pages navbar-fixed">
+          <!-- Page, data-page contains page name-->
+          <div data-page="index-1" class="page">
+            <div class="navbar bg-lightblue color-white border-gray">
+              <div class="navbar-inner">
+                <div class="center">Mr. Hide Hawk</div>
+                
+              </div>
+
+            </div>
+            <!-- Scrollable page content-->
+            <div class="page-content" style="display: none;" id="none-login-user">
+
+              <!-- <div class="content-block-title">Welcome</div> -->
+              <center>
+              <div class="content-block">
+                <p>Do you know if your personal data is all over internet? <br/>Help Guard Your Identity.<br/>True Identity Protection.<br/>Mr. Hide Hawk.</p>
+              </div>
+              <img src="img/app-icon.png" style="width: 40%; height: auto; border-radius: 15%;" /><br/><br/>
+              <a href="#" class="button button-big" id="sign-up" style="width: 70%">Sign Up</a>
+              <p>or</p>
+              <a href="#" class="button button-big open-login-screen" style="width: 70%" id="sign-in">Sign In </a>
+              </center>
+    
+              
+            </div>
+            <div class="page-content" style="display: none;" id="login-user">
+              
+              <!-- <div class="content-block-title">Search</div> -->
+              <div class="content-block">
+                 <!-- Search Bar -->
+                <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+                  <div class="searchbar-input">
+                    <input id="search-content" type="search" placeholder="Type your search here.."><a href="#" class="searchbar-clear"></a>
+                  </div><a href="#" class="searchbar-cancel">Cancel</a>
+                </form>
+                <div id="search-result-container" class="list-block" style="margin-top: 15px;">
+                  <p style="font-size: 13px;">Swipe an item to request to delete.</p>
+                  <ul>
+                  
+                </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Second view (for second wrap)-->
+      <div id="view-2" class="view tab">
+        <!-- We can make with view with navigation, let's add Top Navbar-->
+        <div class="navbar bg-lightblue color-white border-gray">
+          <div class="navbar-inner">
+            <div class="center sliding">​My Requested List</div>
+          </div>
+        </div>
+        <div class="pages navbar-through">
+          <div data-page="index-2" class="page">
+            <div class="page-content">
+              <div class="content-block">
+                <p>All the requests below are being processed and our service provider will stay in touch with you.</p>
+                
+                <p>Swipe an item to cancel.</p>
+              </div>
+              <div class="content-block">
+                
+
+                <div id="my-list-container" class="list-block">
+                  <ul>
+                  
+                  </ul>
+                </div>
+              </div>
+
+              
+
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="view-4" class="view tab view-profile">
+        <div class="pages navbar-through toolbar-through">
+          <div data-page="index-4" class="page">
+            <div class="navbar bg-lightblue color-white border-gray">
+              <div class="navbar-inner">
+                <div class="center">Profile</div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="list-block" id="profile-menu">
+                <div class="content-block" id="profile-picture" style="display: none;">
+                  <center><img  src="" style="width: 70%; height: auto;"></center>
+                </div>
+                <ul>
+                  <li><a href="#subscription-plan" class="item-link" >
+                      <div class="item-content"> 
+                        <div class="item-inner">
+                          <div class="item-title">Subscription Plan</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li><a href="#admin-review-list" class="item-link" id="admin-btn" style="display: none;">
+                      <div class="item-content"> 
+                        <div class="item-inner">
+                          <div class="item-title">Review List</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li><a href="#" class="item-link" id="logout-btn">
+                      <div class="item-content"> 
+                        <div class="item-inner">
+                          <div class="item-title">Logout</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- <div class="content-block">
+                <p>Mauris commodo lacus at nisl lacinia, nec facilisis erat rhoncus. Sed eget pharetra nunc. Aenean vitae vehicula massa, sed sagittis ante. Quisque luctus nec velit dictum convallis. Nulla facilisi. Ut sed erat nisi. Donec non dolor massa. Mauris malesuada dolor velit, in suscipit leo consectetur vitae. Duis tempus ligula non eros pretium condimentum. Cras sed dolor odio.</p>
+              </div> -->
+            </div>
+          </div>
+          <div data-page="admin-review-list" class="page cached">
+            <div class="navbar">
+             <div class="navbar-inner">
+                <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+                <div class="center sliding">Review List</div>
+              </div>
+            </div>
+              <div class="page-content">
+                <div class="content-block-title">All lists</div>
+                <div class="content-block">
+                  <div id="admin-result-container" class="list-block">
+                    <ul>
+                    </ul>
+                  </div>
+                </div>
+                
+              </div>
+          </div>
+
+          <div data-page="subscription-plan" class="page cached">
+            <div class="navbar">
+             <div class="navbar-inner">
+                <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+                <div class="center sliding">Subscription Plan</div>
+              </div>
+            </div>
+              <div class="page-content">
+                <div class="content-block-title">Subscription Plan</div>
+                <div class="content-block">
+                  Edit me!
+                </div>
+                
+              </div>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom Tabbar-->
+      <div class="toolbar tabbar tabbar-labels">
+        <div class="toolbar-inner">
+          <a href="#view-1" class="tab-link active" style="padding-top: 10px;" id="home-btn"> 
+            
+            <i class="icon fa fa-home fa-lg"></i> 
+            <span class="tabbar-label">Home</span>
+          </a>
+          <a href="#view-2" class="tab-link"  style="padding-top: 10px;">
+            <i class="icon  fa fa-list-ul fa-lg">
+              <span class="badge bg-red" style="font-family: sans-serif; display: none;" id="my-list-badge"></span>
+            </i>
+            <span class="tabbar-label">My List</span>
+          </a>
+          <!-- <a href="#view-3" class="tab-link"> 
+            <i class="icon tabbar-demo-icon-3"><span class="badge bg-red">4</span></i>
+            <span class="tabbar-label">Upload</span>
+          </a> -->
+          <a href="#view-4" class="tab-link " id="profile-btn" style="padding-top: 10px;"> 
+            <i class="icon  fa fa-user-secret fa-lg"></i>
+            <span class="tabbar-label">Profile</span>
+          </a>
+        </div>
+      </div>
+
+      
+
+    </div>
+
+    <div class="login-screen">
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content">
+            <div class="login-screen-title">My App</div>
+            <form>
+              <div class="list-block">
+                <ul>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Username</div>
+                      <div class="item-input">
+                        <input type="text" id="email" name="username" placeholder="Your E-mail">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Password</div>
+                      <div class="item-input">
+                        <input type="password" id="password" name="password" placeholder="Your password">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="list-block">
+                <ul>
+                  <li><a href="#" class="item-link list-button" id="btn-sign-in">Sign In</a></li>
+                </ul>
+                <div class="list-block-label">
+                  <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+                  <p><a href="#" class="close-login-screen">Close Login Screen</a></p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="js/underscore-min.js"></script>
+    <script type="text/javascript" src="js/md5.min.js"></script>
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+  </body>
+</html>
